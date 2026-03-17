@@ -1,174 +1,299 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final Birthday Experience 🎬</title>  <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Storm for My Crush 🎉</title>
+  <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('duodua.jpg');
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('duodua.jpg');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       color: white;
       text-align: center;
-      overflow-x: hidden;
-    }
-
-    .card {
-      width: 92%;
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-      animation: zoomIn 0.8s ease;
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.85); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    h1 { font-size: 28px; }
-    h2 { font-size: 26px; }
-
-    p {
-      font-size: 19px;
-      line-height: 1.8;
-    }
-
-    #typedText {
-      font-size: 21px;
-    }
-
-    button {
-      width: 100%;
-      font-size: 18px;
-      padding: 15px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 12px;
-      background: white;
-      color: #ff4e78;
-      font-weight: bold;
-    }
-
-    .hidden { display: none; }
-
-    .heart {
-      position: absolute;
-      animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-      from { transform: translateY(100vh); }
-      to { transform: translateY(-10vh); }
-    }
-
-    .final-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: white;
-      font-size: 24px;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: 1s;
-    }
-
-    .final-screen.show {
-      opacity: 1;
-      pointer-events: all;
-    }
-  </style></head>
-<body><div class="card">
-  <h1>🎂 Azaryne Duodua Apeakoron</h1>
-  <p>Only you can unlock this 😌</p><button onclick="reveal()">Tap to Begin 🎁</button>
-
-  <div id="message" class="hidden">
-    <h2>Azaryne 💖</h2>
-    <p id="typedText"></p><button onclick="loveExplosion()">💥 Feel the Love</button>
-<button onclick="finalScene()">🎬 Final Surprise</button>
-
-  </div>
-</div><div class="final-screen" id="finalScreen">
-  <div>
-    💖
-    <br><br>
-    You’re truly special, Azaryne 😌✨
-    <br><br>
-    And today… the world celebrates YOU 🎉
-    <br><br>
-    Boison 💫
-  </div>
-</div><audio id="music" autoplay loop>
-  <source src="song1.mp3.mp3" type="audio/mpeg">
-</audio><audio id="clickSound">
-  <source src="song1.mp3.mp3" type="audio/mpeg">
-</audio><script>
-const text = "Hey Duodua 🎉💖\n\nToday is all about YOU 😌✨\n\nYou bring a kind of energy that makes everything better 🌟\n\nI hope today gives you moments you’ll never forget 🥳\n\nKeep shining, keep smiling… and keep being YOU 💖\n\nEnjoy your day to the fullest 🔥";
-
-let i = 0;
-
-function typeEffect() {
-  if (i < text.length) {
-    document.getElementById("typedText").innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
-    i++;
-    setTimeout(typeEffect, 25);
-  }
+      padding: 50px;
+      overflow: hidden;
+      position: relative;
+    }.card {
+  background: rgba(0,0,0,0.4);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  animation: pulse 2s infinite;
 }
 
-function reveal() {
-  document.getElementById("message").style.display = "block";
-  document.getElementById("music").play().catch(()=>{});
-  typeEffect();
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
-function loveExplosion() {
-  playSound();
-  for (let i = 0; i < 120; i++) {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = '💖';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.fontSize = (Math.random() * 30 + 15) + 'px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  color: #ff4e78;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
 }
 
-function finalScene() {
-  playSound();
-  document.getElementById("finalScreen").classList.add("show");
+button:hover {
+  transform: scale(1.15) rotate(-3deg);
+  background: #ffebee;
 }
 
-  function playSound() {
-  const sound = document.getElementById("clickSound");
-  sound.currentTime = 0;
-  sound.play();
+.hidden {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
-window.addEventListener('click', () => {
-  for (let i = 0; i < 8; i++) {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = '💖';
-    heart.style.left = Math.random() * 100 + 'vw';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-  }
-});
-</script></body>
-  <strong> &copy; 2026 Jude Nana Kwame Boison. All rights reserved..</strong>
+.typing {
+  border-right: 3px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.heart, .star, .spark, .popup, .love, .nameRibbon, .firework, .emojiRain, .loveExplosion {
+  position: absolute;
+  cursor: pointer;
+}
+
+.heart, .love, .loveExplosion {
+  color: rgba(255,0,100,0.8);
+  font-size: 24px;
+  animation: float 6s linear infinite;
+}
+
+.star, .spark {
+  color: rgba(255,255,255,0.7);
+}
+
+@keyframes float {
+  from { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  animation: confettiFall 4s linear infinite;
+}
+
+@keyframes confettiFall {
+  from { transform: translateY(-10vh) rotate(0deg); }
+  to { transform: translateY(100vh) rotate(360deg); }
+}
+
+.nameRibbon {
+  font-size: 50px;
+  font-weight: bold;
+  color: #ff77aa;
+  text-shadow: 0 0 10px #ff77aa, 0 0 20px #ff44ff, 0 0 30px #ff00ff;
+  animation: ribbonFloat 8s infinite alternate;
+}
+
+@keyframes ribbonFloat {
+  0% { transform: translateX(-100%) translateY(10vh) rotate(-10deg); opacity: 0; }
+  50% { transform: translateX(50vw) translateY(20vh) rotate(10deg); opacity: 1; }
+  100% { transform: translateX(100%) translateY(10vh) rotate(-10deg); opacity: 0; }
+}
+
+.firework {
+  font-size: 30px;
+  color: #ffff66;
+  animation: fireworkExplode 1s ease-out forwards;
+}
+
+@keyframes fireworkExplode {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.emojiRain {
+  font-size: 24px;
+  animation: emojiFall 5s linear forwards;
+}
+
+@keyframes emojiFall {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(100vh); }
+}
+
+  </style>
+</head>
+<body>  <div class="card">
+    <h1>🎂 Azaryne Duodua Apeakoron</h1>
+    <p id="code">19-03-2026</p><button onclick="reveal()">Decode Your Birthday Message,🎁</button>
+
+<div id="message" class="hidden">
+  <h2>Duodua 🎉❤️</h2>
+  <p id="typedText" class="typing"></p>
+
+  <button onclick="extraSurprise()">Tap for Extra Fun 👀</button>
+  <button onclick="loveExplosion()">💥 Secret Love Explosion 💥</button>
+  <p id="extra" class="hidden">🎊 Surprise storm unleashed! You’re the star today! ✨💥 Don’t forget to dance, laugh, and sparkle! 🥳</p>
+</div>
+
+  </div>  <audio id="music" loop autoplay>
+    <source src="song1.mp3.mp3" type="audio/mpeg">
+  </audio>  <script>
+    const music = document.getElementById('music');
+    music.volume = 0.7;
+    music.play().catch(() => console.log('Autoplay blocked'));
+
+    const text = "Hey Azaryne 🎉\n\nThe world is about to get fun, and your birthday is leading the storm! 😎\n\nFeel the vibes, enjoy the confetti, and let the stars shine for you tonight! 🌟\n\nCelebrate like there’s no tomorrow! 🥳✨\n\nP.S. Wishing you this amazing day from me, You will forever be my crush ❤️";
+
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typedText").innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 25);
+      }
+    }
+
+    function reveal() {
+      document.getElementById("message").style.display = "block";
+      music.play().catch(() => console.log('Click to play music'));
+      typeEffect();
+      launchConfetti();
+      launchStars();
+      launchSparks();
+    }
+
+    function extraSurprise() {
+      document.getElementById("extra").style.display = "block";
+      launchHugeLove();
+      launchNameRibbon();
+      launchFireworks();
+      launchEmojiRain();
+    }
+
+    function loveExplosion() {
+      for (let i = 0; i < 150; i++) {
+        const love = document.createElement('div');
+        love.classList.add('loveExplosion');
+        love.innerHTML = '💖';
+        love.style.left = Math.random() * 100 + 'vw';
+        love.style.top = Math.random() * 100 + 'vh';
+        love.style.fontSize = (Math.random() * 50 + 20) + 'px';
+        document.body.appendChild(love);
+        setTimeout(() => love.remove(), 8000);
+      }
+    }
+
+    function launchHugeLove() {
+      for (let i = 0; i < 100; i++) {
+        const love = document.createElement('div');
+        love.classList.add('love');
+        love.innerHTML = '💖';
+        love.style.left = Math.random() * 100 + 'vw';
+        love.style.top = Math.random() * 100 + 'vh';
+        love.style.fontSize = (Math.random() * 40 + 20) + 'px';
+        document.body.appendChild(love);
+        setTimeout(() => love.remove(), 8000);
+      }
+    }
+
+    function launchNameRibbon() {
+      const ribbon = document.createElement('div');
+      ribbon.classList.add('nameRibbon');
+      ribbon.innerHTML = 'Duodua 💖';
+      document.body.appendChild(ribbon);
+      setTimeout(() => ribbon.remove(), 12000);
+    }
+
+    function launchFireworks() {
+      for (let i = 0; i < 30; i++) {
+        const firework = document.createElement('div');
+        firework.classList.add('firework');
+        firework.innerHTML = '✨';
+        firework.style.left = Math.random() * 100 + 'vw';
+        firework.style.top = Math.random() * 50 + 'vh';
+        document.body.appendChild(firework);
+        setTimeout(() => firework.remove(), 1000);
+      }
+    }
+
+    function launchEmojiRain() {
+      const emojis = ['🎂','🎉','🌟','🥳','💖'];
+      for (let i = 0; i < 50; i++) {
+        const emoji = document.createElement('div');
+        emoji.classList.add('emojiRain');
+        emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(emoji);
+        setTimeout(() => emoji.remove(), 5000);
+      }
+    }
+
+    function createPopup(message) {
+      const popup = document.createElement('div');
+      popup.classList.add('popup');
+      popup.innerHTML = message;
+      popup.style.left = Math.random() * 80 + 'vw';
+      popup.style.top = Math.random() * 80 + 'vh';
+      popup.style.fontSize = '20px';
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 2000);
+    }
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+      document.body.appendChild(heart);
+      heart.addEventListener('click', () => createPopup('You clicked a heart! 💖'));
+      setTimeout(() => heart.remove(), 6000);
+    }, 200);
+
+    function launchStars() {
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.innerHTML = "⭐";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.fontSize = (Math.random() * 15 + 5) + "px";
+        star.style.animationDuration = (Math.random() * 4 + 3) + "s";
+        document.body.appendChild(star);
+        star.addEventListener('click', () => createPopup('You touched a star! 🌟'));
+        setTimeout(() => star.remove(), 7000);
+      }
+    }
+
+    function launchSparks() {
+      for (let i = 0; i < 40; i++) {
+        const spark = document.createElement("div");
+        spark.classList.add("spark");
+        spark.innerHTML = "✨";
+        spark.style.left = Math.random() * 100 + "vw";
+        spark.style.fontSize = (Math.random() * 15 + 8) + "px";
+        spark.style.animationDuration = (Math.random() * 4 + 2) + "s";
+        document.body.appendChild(spark);
+        spark.addEventListener('click', () => createPopup('Spark magic! ✨'));
+        setTimeout(() => spark.remove(), 7000);
+      }
+    }
+  </script></body>
+  <footer>
+<strong> &copy; 2026 Jude Nana Kwame Boison. All rights reserved..</strong>
+</footer>
 </html>
